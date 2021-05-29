@@ -1,0 +1,6 @@
+1. Use object instead of array @ serverConfig.main.inputs.1, etc.
+2. Figure out why saying nothing stops further request to @ voiceControl
+3. Add chimes to dictate() @ voiceControl
+------------------------------------------------------------------------------
+4. Automatically close the browser window if the client is already open in another tab
+5. Electron run on startup

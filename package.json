@@ -1,0 +1,54 @@
+{
+  "name": "obs-voice-meeter-project",
+  "version": "1.0.0",
+  "description": "A server to integrate OBS and Voicemeeter using your voice, keyboard shortcuts and more!",
+  "main": "index.js",
+  "homepage": "https://github.com/ZoBro23/obs-voicemeeter-integration",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "electron-builder",
+    "update-config": "node update-config.js",
+    "one-time-config": "node one-time-config.js"
+  },
+  "author": {
+    "name": "ZoBro23",
+    "email": "zohan.subhash@gmail.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "connect-timeout": "^1.9.0",
+    "cors": "^2.8.5",
+    "easy-voicemeeter-remote": "0.0.3",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "jsonschema": "^1.4.0",
+    "obs-websocket-js": "^4.0.2"
+  },
+  "build": {
+    "nsis": {
+      "uninstallDisplayName": "OBS Voicemeeter Integration Server"
+    },
+    "appId": "obs.voicemeeter.integration",
+    "productName": "OBS Voicemeeter Integration Server",
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "icon.ico"
+    },
+    "win": {
+      "publisherName": "ZoBro23",
+      "target": "NSIS"
+    }
+  },
+  "devDependencies": {
+    "electron": "^12.0.9",
+    "electron-builder": "^22.10.5"
+  },
+  "repository": {
+    "url": "https://github.com/ZoBro23/obs-voicemeeter-integration.git"
+  }
+}
