@@ -3,7 +3,7 @@ const axios = require('axios')
 axios.post('http://localhost:23708/updateJSON', {
     'starting soon': {
         inputs: {
-            7: {gain: -15},
+            7: {gain: -5},
             0: {mute: true},
             5: {mute: true}
         },
@@ -11,15 +11,15 @@ axios.post('http://localhost:23708/updateJSON', {
     },
     'ending soon': {
         inputs: {
-            7: {gain: -15},
+            7: {gain: -5},
             0: {mute: true},
             5: {mute: true}
         },
         outputs: {}
     },
-    'intermission': {
+    'interval': {
         inputs: {
-            7: {gain:-15},
+            7: {gain:-5},
             0: {mute: true},
             5: {mute: true}
         },
@@ -31,7 +31,7 @@ axios.post('http://localhost:23708/updateJSON', {
     },
     'main': {
         inputs: {
-            7: {gain: -30},
+            7: {gain: -15},
             0: {mute: false},
             5: {mute: false}
         },

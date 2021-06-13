@@ -1,1 +1,2 @@
-??
+1. Keep updating scene-list
+2. Keep checking server-config
