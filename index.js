@@ -5,7 +5,7 @@ const fs = require('fs')
 const AutoLaunch = require('auto-launch')
 const Validater = require('jsonschema').Validator
 let v = new Validater()
-const { app: electronApp, dialog } = require('electron')
+const { app: electronApp, dialog, BrowserWindow } = require('electron')
 const obs = require('./obs')
 const secondServer = require('./voice-control-files/second-server')
 const voicemeeter = require('./voicemeeter')
@@ -45,7 +45,10 @@ function sceneListUpdate() {
             setTimeout(sceneListUpdate, 5000)
         })
         .catch(err => {
-            dialog.showMessageBox({
+            dialog.showMessageBox(new BrowserWindow({
+                show: false,
+                alwaysOnTop: true
+            }), {
                 message: 'OBS & Voicemeeter BOTH need to be open for the application to work!! Quitting now...',
                 button: 'Ok'
             })
@@ -204,7 +207,10 @@ function main() {
             }
         })
     }).catch(err => {
-        dialog.showMessageBox({
+        dialog.showMessageBox(new BrowserWindow({
+            show: false,
+            alwaysOnTop: true
+        }), {
             message: 'OBS & Voicemeeter BOTH need to be open for the application to work!! Quitting now...',
             button: 'Ok'
         })
@@ -232,5 +238,5 @@ let autoLaunch = new AutoLaunch({
 })
 
 autoLaunch.isEnabled().then((isEnabled) => {
-    if (!isEnabled) autoLaunch.enable()
+    if (!isEnabled) autoLaunch.disable()
 })
