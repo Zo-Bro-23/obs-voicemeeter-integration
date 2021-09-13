@@ -38,7 +38,7 @@ function everything(){
           resolve(event.results[0][0].transcript)
         }
         recognition.onerror = err => {
-          reject(JSON.stringify(err))
+          reject(JSON.stringify(err, null, 4))
         }
       }catch(err){
         reject(err)

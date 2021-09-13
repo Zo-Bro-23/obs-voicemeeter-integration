@@ -1,4 +1,4 @@
-function voicemeeter(app){
+function voicemeeter(app) {
     const express = require('express')
     const voicemeeter = require('easy-voicemeeter-remote')
     let value
@@ -26,8 +26,8 @@ function voicemeeter(app){
     })
 
     app.post('/voicemeeter/strips/:strip', (req, resp) => {
-        for(key in req.body){
-            if(!['mute', 'mono', 'solo', 'gain', 'comp', 'gate'].includes(key)){
+        for (key in req.body) {
+            if (!['mute', 'mono', 'solo', 'gain', 'comp', 'gate'].includes(key)) {
                 resp.status(400)
                 resp.send("That's not a valid setting!")
                 return
@@ -38,8 +38,8 @@ function voicemeeter(app){
     })
 
     app.post('/voicemeeter/buses/:bus', (req, resp) => {
-        for(key in req.body){
-            if(!['mute', 'mono', 'gain'].includes(key)){
+        for (key in req.body) {
+            if (!['mute', 'mono', 'gain'].includes(key)) {
                 resp.status(400)
                 resp.send("That's not a valid setting!")
                 return
@@ -50,8 +50,8 @@ function voicemeeter(app){
     })
 
     app.post('/voicemeeter/stripsRelative/:strip', (req, resp) => {
-        for(key in req.body){
-            if(!['gain', 'comp', 'gate'].includes(key)){
+        for (key in req.body) {
+            if (!['gain', 'comp', 'gate'].includes(key)) {
                 throw "That's not a valid setting!"
             }
             voicemeeter.getAllParameter().then(r => {
@@ -63,8 +63,8 @@ function voicemeeter(app){
     })
 
     app.post('/voicemeeter/busesRelative/:bus', (req, resp) => {
-        for(key in req.body){
-            if(!['gain'].includes(key)){
+        for (key in req.body) {
+            if (!['gain'].includes(key)) {
                 throw "That's not a valid setting!"
             }
             voicemeeter.getAllParameter().then(r => {
@@ -75,8 +75,13 @@ function voicemeeter(app){
         resp.send("Ok!")
     })
 
-    return voicemeeter.init().then(() => {
-        voicemeeter.login()
+    return new Promise((resolve, reject) => {
+        voicemeeter.init().then(() => {
+            voicemeeter.login()
+            resolve()
+        }).catch(err => {
+            reject()
+        })
     })
 }
 

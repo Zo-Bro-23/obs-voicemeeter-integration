@@ -1,6 +1,6 @@
 {
-  "name": "obs-voice-meeter-project",
-  "version": "1.0.0",
+  "name": "obs-voicemeeter-integration",
+  "version": "1.0.1",
   "description": "A server to integrate OBS and Voicemeeter using your voice, keyboard shortcuts and more!",
   "main": "index.js",
   "homepage": "https://github.com/ZoBro23/obs-voicemeeter-integration",
@@ -17,6 +17,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "auto-launch": "^5.0.5",
     "axios": "^0.21.1",
     "connect-timeout": "^1.9.0",
     "cors": "^2.8.5",

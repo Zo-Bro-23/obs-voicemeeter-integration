@@ -33,11 +33,11 @@ function keypress(app){
             keys.subscribed.push(
                 req.body.key
             )
-            fs.writeFileSync('keypress-keys.json', JSON.stringify(keys))
+            fs.writeFileSync('keypress-keys.json', JSON.stringify(keys, null, 4))
             globalShortcut.register(req.body.key, onKeyPress(req.body.key))
         }
 
-        fs.writeFileSync('keypress-webhooks.json', JSON.stringify(webhooks))
+        fs.writeFileSync('keypress-webhooks.json', JSON.stringify(webhooks, null, 4))
         resp.send('Webhook set!')
     })
 
@@ -54,7 +54,7 @@ function keypress(app){
         for(item in webhooks.subscribed){
             if(webhooks.subscribed[item].url == req.body.url && webhooks.subscribed[item].key == req.body.key){
                 webhooks.subscribed.splice(item, 1)
-                fs.writeFileSync('keypress-webhooks.json', JSON.stringify(webhooks))
+                fs.writeFileSync('keypress-webhooks.json', JSON.stringify(webhooks, null, 4))
                 resp.send('Webhook removed!')
                 for(microItem in webhooks.subscribed){
                     if(webhooks.subscribed[microItem].key == req.body.key){
@@ -62,7 +62,7 @@ function keypress(app){
                     }
                 }
                 keys.subscribed.splice(keys.subscribed.indexOf(req.body.key))
-                fs.writeFileSync('keypress-keys.json', JSON.stringify(keys))
+                fs.writeFileSync('keypress-keys.json', JSON.stringify(keys, null, 4))
                 globalShortcut.unregister(req.body.key)
                 return
             }

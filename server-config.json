@@ -1,1 +1,43 @@
-{"starting soon":{"inputs":{"7":{"mute":false}},"outputs":{}},"ending soon":{"inputs":{"7":{"mute":false}},"outputs":{}},"intermission":{"inputs":{"7":{"mute":false}},"outputs":{}},"backgrounds":{"inputs":{},"outputs":{}},"main":{"inputs":{"7":{"mute":true}},"outputs":{}},"config":{"muteWhenSpeaking":[1]}}
+{
+    "starting soon": {
+        "inputs": {
+            "7": {
+                "mute": false
+            }
+        },
+        "outputs": {}
+    },
+    "ending soon": {
+        "inputs": {
+            "7": {
+                "mute": false
+            }
+        },
+        "outputs": {}
+    },
+    "intermission": {
+        "inputs": {
+            "7": {
+                "mute": false
+            }
+        },
+        "outputs": {}
+    },
+    "backgrounds": {
+        "inputs": {},
+        "outputs": {}
+    },
+    "main": {
+        "inputs": {
+            "7": {
+                "mute": true
+            }
+        },
+        "outputs": {}
+    },
+    "config": {
+        "muteWhenSpeaking": [
+            1
+        ]
+    }
+}
