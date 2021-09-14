@@ -13,7 +13,7 @@ NOTE: Voicemeeter is only there for Windows, so naturally, this application is t
 
 Run the EXE file. It will probably give you an error and shut down. You need to open OBS, genius! You need to open Voicemeeter too.
 
-Using Postman (or any other application), do a HTTP POST request to the following URL: 'http://localhost:23708/updateJSON' with some JSON in the following format. Again, if you're building the app yourself, you can just run update-config after editing the code a bit. Here's the JSON format:
+Using Postman (or any other application), do a HTTP POST request to the following URL: 'http://localhost:23708/updateJSON' with some JSON in the following format. Make sure that all your scene names are in small letters and that they don't contain any characters such as hyphen, period, brackets, etc. Also, make sure that there is no scene named "config". Again, if you're building the app yourself, you can just run update-config after editing the code a bit. Here's the JSON format:
 
 {
     "scene1": {
@@ -32,10 +32,13 @@ Using Postman (or any other application), do a HTTP POST request to the followin
                 "mute": false
             }
         }
+    },
+    "config": {
+        muteWhenSpeaking: [1]
     }
 }
 
-Note: All scene names and the Outputs and Inputs part are mandatory, but the strip numbers and effect (gain/mute) are optional.
+Note: All scene names (along with config) and the Outputs and Inputs part are mandatory, but the strip numbers and effect (gain/mute) are optional (along with the muteWhenSpeaking part). Any strip numbers provided inside the muteWhenSpeaking array will be muted when the application is listening for the user's voice.
 
 Press Ctrl + Alt + W. Make sure that this combination isn't used for any other application. There's no way to change it if you're using the EXE. If you're building the app yourself (see build instructions below), however, just edit the one-time-config.js by replacing Key parameter in the /keypress/addWebhook line with the key you want to assign. Then run node one-time-config.js.
 
