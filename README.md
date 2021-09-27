@@ -115,10 +115,15 @@ Give only the settings you need to change.
 {"updateType": "SwitchScenes", "scene-name": "scene1"}
 
 /shouldDictate - Used by /voiceControl browser application to know when to start recognizing speech.
+
 /shouldSpeak - Used by /voiceControl browser application to know when to read out a message.
+
 /doneDictating - Used by /voiceControl browser application when it finishes recognizing speech.
+
 /doneSpeaking - Used by /voiceControl browser application when it finishes speaking.
+
 /open - Used by /voiceControl browser application when it gets opened.
+
 /close - Used by /voiceControl browser application when it closes.
 
 ## Build instructions
