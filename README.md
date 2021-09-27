@@ -15,6 +15,7 @@ Run the EXE file. It will probably give you an error and shut down. You need to 
 
 After you open the application, wait a few seconds. Then edit the file **C:\Users\{your username}\AppData\Roaming\obs-voicemeeter-integration\server-config.json** with some JSON in the following format. Make sure that all your scene names are in small letters and that they don't contain any characters such as hyphen, period, brackets, etc. Also, make sure that there is no scene named "config". Again, if you're building the app yourself, you can just run update-config after editing the code a bit. Here's the JSON format:
 
+```json
 {
     "scene1": {
         "inputs": {
@@ -37,6 +38,7 @@ After you open the application, wait a few seconds. Then edit the file **C:\User
         muteWhenSpeaking: [1]
     }
 }
+```
 
 Note: All scene names (along with config) and the Outputs and Inputs part are mandatory, but the strip numbers and effect (gain/mute) are optional (along with the muteWhenSpeaking part). Any strip numbers provided inside the muteWhenSpeaking array will be muted when the application is listening for the user's voice.
 
