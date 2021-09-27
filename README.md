@@ -3,7 +3,7 @@
 
 Okay, so let me get this straight. This is not a plugin. It's not even an application with a proper UI. Then why bother? Well, don't ask me. You're the one who's here!
 
-OBS Voicemeeter Integration Server (for lack of a better name) is an application that allows you to synchronize between OBS and Voicemeeter (🤯). I'm a huge user of both the applications. In case you didn't know, OBS Studio let's you live stream pretty much anything, while Voicemeeter is like a virtual audio mixer. OBS does have audio provisions, but if you're already a Voicemeeter user, you'll find it annoying to change all your configuration. Voicemeeter doesn't let you use any audio devices while it's open, so you have to close it and spend a good half-an-hour each time you want to stream. And that's exactly why I made this application!
+OBS Voicemeeter Integration Server (for lack of a better name) is an application that allows you to synchronize between OBS and Voicemeeter (🤯). I'm a huge fan of both the applications. In case you didn't know, OBS Studio let's you live stream pretty much anything, while Voicemeeter is like a virtual audio mixer. OBS does have audio provisions, but if you're already a Voicemeeter user, you'll find it annoying to change all your configuration. Voicemeeter doesn't let you use any audio devices while it's open, so you have to close it and spend a good half-an-hour each time you want to stream. And that's exactly why I made this application!
 
 ## Using it out of the box
 
@@ -13,7 +13,7 @@ NOTE: Voicemeeter is only there for Windows, so naturally, this application is t
 
 Run the EXE file. It will probably give you an error and shut down. You need to open OBS, genius! You need to open Voicemeeter too.
 
-Edit the file **C:\Users\{your username}\AppData\Roaming\obs-voicemeeter-integration\server-config.json** with some JSON in the following format. Make sure that all your scene names are in small letters and that they don't contain any characters such as hyphen, period, brackets, etc. Also, make sure that there is no scene named "config". Again, if you're building the app yourself, you can just run update-config after editing the code a bit. Here's the JSON format:
+After you open the application, wait a few seconds. Then edit the file **C:\Users\{your username}\AppData\Roaming\obs-voicemeeter-integration\server-config.json** with some JSON in the following format. Make sure that all your scene names are in small letters and that they don't contain any characters such as hyphen, period, brackets, etc. Also, make sure that there is no scene named "config". Again, if you're building the app yourself, you can just run update-config after editing the code a bit. Here's the JSON format:
 
 {
     "scene1": {
