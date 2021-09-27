@@ -13,7 +13,7 @@ NOTE: Voicemeeter is only there for Windows, so naturally, this application is t
 
 Run the EXE file. It will probably give you an error and shut down. You need to open OBS, genius! You need to open Voicemeeter too.
 
-Using Postman (or any other application), do a HTTP POST request to the following URL: 'http://localhost:23708/updateJSON' with some JSON in the following format. Make sure that all your scene names are in small letters and that they don't contain any characters such as hyphen, period, brackets, etc. Also, make sure that there is no scene named "config". Again, if you're building the app yourself, you can just run update-config after editing the code a bit. Here's the JSON format:
+Edit the file **C:\Users\{your username}\AppData\Roaming\obs-voicemeeter-integration\server-config.json** with some JSON in the following format. Make sure that all your scene names are in small letters and that they don't contain any characters such as hyphen, period, brackets, etc. Also, make sure that there is no scene named "config". Again, if you're building the app yourself, you can just run update-config after editing the code a bit. Here's the JSON format:
 
 {
     "scene1": {

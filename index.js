@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const path = require('path')
 const axios = require('axios')
 const fs = require('fs')
 const AutoLaunch = require('auto-launch')
@@ -12,6 +13,13 @@ const voicemeeter = require('./voicemeeter')
 const keypress = require('./keypress')
 const voiceControl = require('./voice-control')
 let sceneList = []
+let serverConfigTemplate = {
+    "config": {
+        "muteWhenSpeaking": [
+            1
+        ]
+    }
+}
 let schema = {
     type: "object",
     properties: {
@@ -28,8 +36,9 @@ let schema = {
     additionalProperties: false,
     required: ['config']
 }
-let serverConfig = require('./server-config.json')
-const { response, set } = require('./voice-control-files/second-server')
+
+const serverConfigPath = path.join(process.env.APPDATA, 'OBS-Voicemeeter-Integration', 'server-config.json')
+
 let close
 
 app.use(express.urlencoded({ extended: true }))
@@ -41,6 +50,16 @@ function sceneListUpdate() {
             sceneList = []
             for (item in res.data.scenes) {
                 sceneList.push(res.data.scenes[item].name)
+            }
+            if (!fs.existsSync(serverConfigPath)) {
+                for (scene in sceneList) {
+                    serverConfigTemplate[sceneList[scene]] = {
+                        "inputs": {},
+                        "outputs": {}
+                    }
+                }
+                fs.writeFileSync(serverConfigPath, JSON.stringify(serverConfigTemplate, null, 4))
+                global.serverConfig = require(serverConfigPath)
             }
             setTimeout(sceneListUpdate, 5000)
         })
@@ -56,11 +75,23 @@ function sceneListUpdate() {
                     close = true
                     setTimeout(() => electronApp.quit(), 5000)
                 })
+
+            console.log(err)
         })
 }
 
 function main() {
     Promise.all([obs(app), voicemeeter(app), keypress(app), voiceControl(app)]).then((results) => {
+        if (!fs.existsSync(path.join(process.env.APPDATA, 'OBS-Voicemeeter-Integration'))) {
+            fs.mkdirSync(path.join(process.env.APPDATA, 'OBS-Voicemeeter-Integration'))
+        }
+
+        if (!fs.existsSync(serverConfigPath)) {
+            global.serverConfig = {}
+        } else {
+            global.serverConfig = require(serverConfigPath)
+        }
+
         sceneListUpdate()
 
         app.listen(23708).on('error', () => {
@@ -153,7 +184,7 @@ function main() {
                     if (v.validate(req.body, schema).errors.length == 0) {
                         serverConfig = req.body
                         resp.send('JSON updated!')
-                        fs.writeFileSync('server-config.json', JSON.stringify(serverConfig, null, 4))
+                        fs.writeFileSync(serverConfigPath, JSON.stringify(serverConfigPath, null, 4))
                     } else {
                         resp.status(400)
                         resp.send(JSON.stringify(v.validate(req.body, schema).errors[0], null, 4))
@@ -217,6 +248,8 @@ function main() {
             .then(() => {
                 electronApp.quit()
             })
+
+        console.log(err)
     })
 }
 
