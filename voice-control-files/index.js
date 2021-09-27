@@ -1,20 +1,20 @@
-function everything(){
+function everything() {
   document.getElementById('button').style.display = 'none'
   document.getElementById('img').style.display = 'block'
 
   navigator.permissions.query({ name: 'microphone' })
     .then(permissionStatus => {
-        if(permissionStatus.state == 'denied'){
-            document.getElementById('p').innerHTML = 'Permission is denied.'
-            document.getElementById('img').style.display = 'none'
-        }
-        permissionStatus.onchange = () => window.location.reload()
+      if (permissionStatus.state == 'denied') {
+        document.getElementById('p').innerHTML = 'Permission is denied.'
+        document.getElementById('img').style.display = 'none'
+      }
+      permissionStatus.onchange = () => window.location.reload()
 
-      })
+    })
 
-  function speak(text){
+  function speak(text) {
     return new Promise((resolve, reject) => {
-      try{
+      try {
         const synth = window.speechSynthesis
         let utterThis = new SpeechSynthesisUtterance(text)
         // utterThis.voice = synth.getVoices()[20]
@@ -22,15 +22,15 @@ function everything(){
           resolve()
         }
         synth.speak(utterThis)
-      }catch(err){
+      } catch (err) {
         reject(err)
       }
     })
   }
 
-  function dictate(){
+  function dictate() {
     return new Promise((resolve, reject) => {
-      try{
+      try {
         window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition
         const recognition = new SpeechRecognition()
         recognition.start()
@@ -40,27 +40,28 @@ function everything(){
         recognition.onerror = err => {
           reject(JSON.stringify(err, null, 4))
         }
-      }catch(err){
+      } catch (err) {
         reject(err)
       }
     })
   }
 
-  function dictateFunc(){
+  function dictateFunc() {
     axios.get('http://localhost:37492/shouldDictate').then(res => {
       temp = res.data
-      if(temp == 'Yes!'){
+      if (temp == 'Yes!') {
         starting.play()
         dictate().then(res => {
+          console.log(res)
           ending.play()
-          axios.post('http://localhost:37492/doneDictating', {message: res})
+          axios.post('http://localhost:37492/doneDictating', { message: res })
           dictateFunc()
         }).catch(err => {
           ending.play()
-          axios.post('http://localhost:37492/doneDictating', {message: 'Error occured.'})
+          axios.post('http://localhost:37492/doneDictating', { message: 'Error occured.' })
           dictateFunc()
         })
-      }else{
+      } else {
         dictateFunc()
       }
     }).catch(err => {
@@ -70,10 +71,10 @@ function everything(){
 
   dictateFunc()
 
-  function speakFunc(){
+  function speakFunc() {
     axios.get('http://localhost:37492/shouldSpeak').then(res => {
       temp = res.data
-      if(temp.shouldSpeak == true){
+      if (temp.shouldSpeak == true) {
         speak(temp.message).then(() => {
           axios.post('http://localhost:37492/doneSpeaking')
           speakFunc()
@@ -81,7 +82,7 @@ function everything(){
           axios.post('http://localhost:37492/doneSpeaking')
           speakFunc()
         })
-      }else{
+      } else {
         speakFunc()
       }
     }).catch(err => {
@@ -96,7 +97,7 @@ function everything(){
     return "Are you sure?"
   }
 
-  window.onunload = () => {}
+  window.onunload = () => { }
 }
 
 const axios = require('axios')
@@ -105,13 +106,13 @@ var starting = new Audio('chime-starting.mp3')
 var ending = new Audio('chime-ending.mp3')
 document.getElementById('button').onclick = everything
 
-function closingFunc(){
+function closingFunc() {
   axios.get('http://localhost:37492/shouldClose')
     .then(res => {
-      if(res.data == 'Yes!'){
-        window.onbeforeunload = () => {}
+      if (res.data == 'Yes!') {
+        window.onbeforeunload = () => { }
         window.close()
-      }else{
+      } else {
         closingFunc()
       }
     }).catch(err => {
@@ -129,8 +130,8 @@ window.onunload = () => {
   axios.post('http://localhost:37492/close')
 }
 
-function openStatus(){
-  setTimeout(() => {axios.post('http://localhost:37492/open'); openStatus()}, 1000)
+function openStatus() {
+  setTimeout(() => { axios.post('http://localhost:37492/open'); openStatus() }, 1000)
 }
 
 openStatus()
