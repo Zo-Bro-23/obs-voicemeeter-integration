@@ -1,5 +1,5 @@
 # OBS Voicemeeter Integration
-## A server to integrate OBS and Voicemeeter using your voice, keyboard shortcuts and more!
+## An application to integrate OBS and Voicemeeter using your voice, keyboard shortcuts and more!
 
 Okay, so let me get this straight. This is not a plugin. It's not even an application with a proper UI. Then why bother? Well, don't ask me. You're the one who's here!
 
