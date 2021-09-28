@@ -42,17 +42,17 @@ After you open the application, wait a few seconds. Then edit the file **C:\User
 
 Note: All scene names (along with config) and the Outputs and Inputs part are mandatory, but the strip numbers and effect (gain/mute) are optional (along with the muteWhenSpeaking part). Any strip numbers provided inside the muteWhenSpeaking array will be muted when the application is listening for the user's voice.
 
-Press Ctrl + Alt + W. Make sure that this combination isn't used for any other application. There's no way to change it if you're using the EXE. If you're building the app yourself (see build instructions below), however, just edit the one-time-config.js by replacing Key parameter in the /keypress/addWebhook line with the key you want to assign. Then run node one-time-config.js.
+Press Ctrl + Alt + W. Make sure that this combination isn't used for any other application. There's no way to change it if you're using the EXE. If you're building the app yourself (see build instructions below), however, just edit the one-time-config.js by replacing Key parameter in the /keypress/addWebhook line with the key you want to assign. Then run **node one-time-config.js**.
 
-Wait for a few seconds. A browser tab should open. Press Start Server. Say something like "Switch to [scene name]". It should switch scenes in OBS. It should also change your Voicemeeter config a bit (according to your JSON).
+Wait for a few seconds. A browser tab should open. Press Start Server. Say something like "Switch to [scene name]". It should switch scenes in OBS. If it says the scene doesn't exist, press F12. Go to the console section and press Ctrl + Alt + W again. Say the scene name again and see what it prints out. Sometimes you need to change the scene name in OBS. For example: "webcam" should be changed to "web cam" for it to work correctly. Please note: If you change a scene name or add a new scene in OBS, changes may take 5 seconds to reflect in the application. After switching scenes in OBS (using your voice), it should also change your Voicemeeter config a bit (according to your JSON).
 
-Now change the scene in OBS. Voicemeeter should change automatically too. And that's the magic of my application!
+Now change the scene in OBS (manually or through keyboard shortcut). Voicemeeter should change automatically too. And that's the magic of my application!
 
 ## Using the in-built APIs
 
-This application has a LOT of APIs. And all of them are exposed! Some of you will be muttering about security, but only the ports on your local PC is exposed. Here is a list of all the APIs that my application brings with it. Feel free to use any of them, but some of them (especially the ones with a different port) may destroy the application. If that happens, just re-install it and you should be fine!
+This application has a LOT of APIs. And all of them are exposed! Some of you will be muttering about security, but only the ports on your local PC is exposed. Here is a list of all the APIs that my application brings with it. Feel free to use any of them, but some of them (especially the ones on port 37492) may interfere with the application's internal functions. If something goes wrong, just re-install it and you should be fine!
 
-Note: All endpoints are GET unless specified
+Note: All endpoints are http GET unless specified explicitly
 
 ### On port 23708
 
