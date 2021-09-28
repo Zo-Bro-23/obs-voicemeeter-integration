@@ -130,7 +130,7 @@ Give only the settings you need to change.
 
 ## Build instructions
 
-Download the ZIP file. Extract it. Open a new Command Prompt in the root location of the folder. Install packages with the command **npm i**. Change whatever you need to, and run the command **npm run build**. The EXE file should be generated at "./dist/OBS Voicemeeter Integration Server Setup 1.1.1.exe".
+Download the ZIP file. Extract it. Open a new Command Prompt in the root location of the folder. Install packages with the command **npm i**. Change whatever you need to, and run the command **npm run build**. The EXE file should be generated at "./dist/OBS Voicemeeter Integration Server Setup x.x.x.exe".
 
 ## Further resources
 
