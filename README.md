@@ -134,4 +134,4 @@ Download the ZIP file. Extract it. Open a new Command Prompt in the root locatio
 
 ## Further resources
 
-You can find the files for this application here. If you want to run only one of the four bits of this application (Voicemeeter, OBS, Voice recognition, Keyboard shortcut), you can find the APIs separately here.
+You can find the files for this application here (GitHub). If you want to run only one of the four bits of this application (Voicemeeter, OBS, Voice recognition, Keyboard shortcut), you can find the APIs separately here.
