@@ -5,6 +5,10 @@ Okay, so let me get this straight. This is not a plugin. It's not even an applic
 
 OBS Voicemeeter Integration Server (for lack of a better name) is an application that allows you to synchronize between OBS and Voicemeeter (🤯). I'm a huge fan of both the applications. In case you didn't know, OBS Studio let's you live stream pretty much anything, while Voicemeeter is like a virtual audio mixer. OBS does have audio provisions, but if you're already a Voicemeeter user, you'll find it annoying to change all your configuration. Voicemeeter doesn't let you use any audio devices while it's open, so you have to close it and spend a good half-an-hour each time you want to stream. And that's exactly why I made this application!
 
+## Prerequisites
+
+Well, you need to have OBS installed (obviously!) and you also need to have Voicemeeter installed. Like I mentioned before, this applciation will ONLY WORK on Windows. Also, you need to have the [OBS Websocket](https://obsproject.com/forum/resources/obs-websocket-remote-control-obs-studio-from-websockets.466/) plugin installed. Please set the port to the default of 4444 and please don't set any password.
+
 ## Using it out of the box
 
 Download and install the EXE.
